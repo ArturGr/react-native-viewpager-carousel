@@ -26,6 +26,7 @@ export default class ViewPager extends PureComponent {
     renderPage: () => {},
     onPageChange: () => {},
     onScroll: () => {},
+    onScrollBeginDrag: () => {},
     scrollEnabled: true,
     data: [],
     experimentalMirroring: false,
@@ -59,6 +60,7 @@ export default class ViewPager extends PureComponent {
     renderPage: PropTypes.func,
     onPageChange: PropTypes.func,
     onScroll: PropTypes.func,
+    onScrollBeginDrag: PropTypes.func,
   }
 
   constructor(props) {
@@ -316,6 +318,7 @@ export default class ViewPager extends PureComponent {
   }
 
   _onScrollBeginDrag = () => {
+    this.props.onScrollBeginDrag();
     this.pageIndexBeforeDrag = this.pageIndex
   }
 
