@@ -27,6 +27,7 @@ export default class ViewPager extends PureComponent {
     onPageChange: () => {},
     onScroll: () => {},
     onScrollBeginDrag: () => {},
+    onMomentumScrollEnd: ()=>{},
     scrollEnabled: true,
     data: [],
     experimentalMirroring: false,
@@ -61,6 +62,7 @@ export default class ViewPager extends PureComponent {
     onPageChange: PropTypes.func,
     onScroll: PropTypes.func,
     onScrollBeginDrag: PropTypes.func,
+    onMomentumScrollEnd: PropTypes.func,
   }
 
   constructor(props) {
@@ -323,6 +325,7 @@ export default class ViewPager extends PureComponent {
   }
 
   _onMomentumScrollEnd = () => {
+    this.props.onMomentumScrollEnd();
     const pageNumber = this._getPageNumberByIndex(this.pageIndex)
     for (const key in this.pageReferences) {
       if (this.pageReferences[key])
